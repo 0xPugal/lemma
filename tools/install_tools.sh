@@ -40,9 +40,21 @@ if [ "$arch" == "x86_64" ]; then
 
     echo "Installing httpx..."
     tmpdir=$(mktemp -d)
-    wget https://github.com/projectdiscovery/httpx/releases/download/v1.6.5/httpx_1.6.5_linux_amd64.zip -O $tmpdir/httpx.zip > /dev/null 2>&1
+    wget https://github.com/projectdiscovery/httpx/releases/download/v1.6.9/httpx_1.6.9_linux_amd64.zip -O $tmpdir/httpx.zip > /dev/null 2>&1
     unzip $tmpdir/httpx.zip -d $tmpdir > /dev/null 2>&1
     mv $tmpdir/httpx ./app/tools
+    
+    echo "Installing nuclei..."
+    tmpdir=$(mktemp -d)
+    wget https://github.com/projectdiscovery/nuclei/releases/download/v3.3.5/nuclei_3.3.5_linux_amd64.zip -O $tmpdir/nuclei.zip > /dev/null 2>&1
+    unzip $tmpdir/nuclei.zip -d $tmpdir > /dev/null 2>&1
+    mv $tmpdir/nuclei ./app/tools
+    
+    echo "Installing naabu..."
+    tmpdir=$(mktemp -d)
+    wget https://github.com/projectdiscovery/naabu/releases/download/v2.3.2/naabu_2.3.2_linux_amd64.zip -O $tmpdir/naabu.zip > /dev/null 2>&1
+    unzip $tmpdir/naabu.zip -d $tmpdir > /dev/null 2>&1
+    mv $tmpdir/naabu ./app/tools
 
     echo "Installing gau..."
     tmpdir=$(mktemp -d)
@@ -52,7 +64,7 @@ if [ "$arch" == "x86_64" ]; then
 
     echo "Installing subfinder..."
     tmpdir=$(mktemp -d)
-    wget https://github.com/projectdiscovery/subfinder/releases/download/v2.6.6/subfinder_2.6.6_linux_amd64.zip -O $tmpdir/subfinder.zip > /dev/null 2>&1
+    wget https://github.com/projectdiscovery/subfinder/releases/download/v2.6.7/subfinder_2.6.7_linux_amd64.zip -O $tmpdir/subfinder.zip > /dev/null 2>&1
     unzip $tmpdir/subfinder.zip -d $tmpdir > /dev/null 2>&1
     mv $tmpdir/subfinder ./app/tools
 
@@ -72,9 +84,15 @@ elif [ "$arch" == "arm64" ]; then
 
     echo "Installing httpx..."
     tmpdir=$(mktemp -d)
-    wget https://github.com/projectdiscovery/httpx/releases/download/v1.6.5/httpx_1.6.5_linux_arm64.zip -O $tmpdir/httpx.zip > /dev/null 2>&1
+    wget https://github.com/projectdiscovery/httpx/releases/download/v1.6.9/httpx_1.6.9_linux_arm64.zip -O $tmpdir/httpx.zip > /dev/null 2>&1
     unzip $tmpdir/httpx.zip -d $tmpdir > /dev/null 2>&1
     mv $tmpdir/httpx ./app/tools
+    
+    echo "Installing nuclei..."
+    tmpdir=$(mktemp -d)
+    wget https://github.com/projectdiscovery/nuclei/releases/download/v3.3.5/nuclei_3.3.5_linux_arm64.zip -O $tmpdir/nuclei.zip > /dev/null 2>&1
+    unzip $tmpdir/nuclei.zip -d $tmpdir > /dev/null 2>&1
+    mv $tmpdir/nuclei ./app/tools
 
     echo "Installing gau..."
     tmpdir=$(mktemp -d)
@@ -84,7 +102,7 @@ elif [ "$arch" == "arm64" ]; then
 
     echo "Installing subfinder..."
     tmpdir=$(mktemp -d)
-    wget https://github.com/projectdiscovery/subfinder/releases/download/v2.6.6/subfinder_2.6.6_linux_arm64.zip -O $tmpdir/subfinder.zip > /dev/null 2>&1
+    wget https://github.com/projectdiscovery/subfinder/releases/download/v2.6.7/subfinder_2.6.7_linux_arm64.zip -O $tmpdir/subfinder.zip > /dev/null 2>&1
     unzip $tmpdir/subfinder.zip -d $tmpdir > /dev/null 2>&1
     mv $tmpdir/subfinder ./app/tools
 
@@ -100,9 +118,7 @@ echo "Installing smuggler..."
 git clone https://github.com/defparam/smuggler ./app/tools/bin/smuggler > /dev/null 2>&1
 
 
-echo "Installing SecLists's common.txt wordlist..."
-wget https://raw.githubusercontent.com/danielmiessler/SecLists/master/Discovery/Web-Content/common.txt -O ./app/tools/wordlists/common.txt > /dev/null 2>&1
+echo "Installing Six2dez's onelistforallmicro.txt wordlist..."
+wget https://raw.githubusercontent.com/six2dez/OneListForAll/refs/heads/main/onelistforallmicro.txt -O ./app/tools/wordlists/onelistforallmicro.txt > /dev/null 2>&1
 
 rm -rf ./app/tools/install_tools.sh
-
-
